@@ -1,0 +1,54 @@
+name: Deploy to cPanel
+
+on:
+  push:
+    branches:
+      - develop
+    tags:
+      - '*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.19.4'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to cPanel via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.1
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ github.ref == 'refs/heads/develop' && '/tombola-test.antoine-g.com/' || '/tombola.antoine-g.com/' }}
+
+      - name: 🔁 Trigger Passenger restart
+        run: |
+          mkdir -p tmp
+          echo "restarted-by-github-actions: $(date -u)" > tmp/restart.txt
+
+      - name: 📤 Upload restart file via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.1
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ github.ref == 'refs/heads/develop' && '/tombola-test.antoine-g.com/tmp/' || '/tombola.antoine-g.com/tmp/' }}
+          local-dir: ./tmp/
+
+      - name: ✅ Done
+        run: echo "🎉 Deployed and Passenger restarted successfully!"
