@@ -1,4 +1,4 @@
-import LoginForm from '@/features/login/login-form'
+import LoginForm from '@/features/login/components/login-form'
 import Main from '@/shared/components/atoms/main'
 
 type LoginPageProps = {
