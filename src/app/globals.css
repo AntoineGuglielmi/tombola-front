@@ -1,1 +1,46 @@
 @import 'tailwindcss';
+
+:root {
+  --light-grey: oklch(97.02% 0 0);
+}
+
+@theme inline {
+  /* COLORS */
+  --color-global-background: var(--light-grey);
+
+  /* FONTS */
+  --font-nunito: var(--font-nunito);
+  --font-varela: var(--font-varela);
+  --font-copse: var(--font-copse);
+}
+
+/* prettier-ignore */
+@utility fz-* {
+  font-size: --spacing(--value(integer));
+  font-size: --value([*]);
+}
+
+/* prettier-ignore */
+@utility ls-* {
+  letter-spacing: --spacing(--value(integer));
+  letter-spacing: --value([*]);
+}
+
+/* prettier-ignore */
+@utility fw-* {
+  font-weight: --value(integer);
+}
+
+/* prettier-ignore */
+@utility br-* {
+  border-radius: --spacing(--value(integer));
+  border-radius: --value([*]);
+}
+
+@utility br-full {
+  border-radius: 9999px;
+}
+
+@utility tombola-container {
+  @apply container px-4 mx-auto;
+}

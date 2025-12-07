@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${varela.variable} ${copse.variable} ${nunito.variable} antialiased`}
+        className={`${varela.variable} ${copse.variable} ${nunito.variable} antialiased bg-global-background font-nunito`}
       >
         {children}
       </body>
