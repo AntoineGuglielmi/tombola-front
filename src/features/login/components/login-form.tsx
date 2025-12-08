@@ -14,8 +14,12 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { loginSchema, LoginValues } from '../lib/z-login'
+import { actionLogin } from '../actions/actionLogin'
+import { useRouter } from 'next/navigation'
 
 export default function LoginForm() {
+  const router = useRouter()
+
   const form = useForm<LoginValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -24,17 +28,20 @@ export default function LoginForm() {
     },
   })
 
-  const onSubmit = (data: LoginValues) => {
-    console.log(data)
+  const onSubmit = async (loginValues: LoginValues) => {
+    const res = await actionLogin(loginValues)
+    if (res?.redirectTo) {
+      router.push(res?.redirectTo)
+    }
   }
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-6 max-w-sm"
+        className="flex flex-col gap-6"
       >
-        <h1>Tombola</h1>
+        <h1 className="fz-6 fw-700">Tombola</h1>
         {/* EMAIL */}
         <FormField
           control={form.control}
