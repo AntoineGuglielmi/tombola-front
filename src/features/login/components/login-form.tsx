@@ -3,8 +3,8 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { Button } from '@/shared/components/ui/button'
+import { Input } from '@/shared/components/ui/input'
 import {
   Form,
   FormControl,
@@ -12,7 +12,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
+} from '@/shared/components/ui/form'
 import { loginSchema, LoginValues } from '../lib/z-login'
 import { actionLogin } from '../actions/actionLogin'
 import { useRouter } from 'next/navigation'
@@ -23,8 +23,9 @@ export default function LoginForm() {
   const form = useForm<LoginValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: '',
-      password: '',
+      email:
+        process.env.NODE_ENV === 'development' ? 'tombola@tombola.com' : '',
+      password: process.env.NODE_ENV === 'development' ? 'tombola_8!' : '',
     },
   })
 
@@ -39,9 +40,9 @@ export default function LoginForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-6"
+        className="flex flex-col gap-6 px-8 py-14 br-4 shadow-[0_0_0.75rem_rgba(0,0,0,0.25)] glass w-full max-w-prose"
       >
-        <h1 className="fz-6 fw-700">Tombola</h1>
+        <h1 className="fz-8 fw-100">Tombola</h1>
         {/* EMAIL */}
         <FormField
           control={form.control}

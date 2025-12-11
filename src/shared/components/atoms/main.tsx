@@ -10,7 +10,7 @@ type MainProps = {
 const MainVariants = cva('Main', {
   variants: {
     variant: {
-      center: 'h-dvh flex items-center tombola-container',
+      center: 'min-h-dvh flex items-center tombola-container',
       other: '',
     },
   },

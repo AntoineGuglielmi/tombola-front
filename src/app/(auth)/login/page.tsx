@@ -1,14 +1,12 @@
 import LoginForm from '@/features/login/components/login-form'
 import Main from '@/shared/components/atoms/main'
 
-type LoginPageProps = {
-  params: Promise<void>
-}
-
-export default function LoginPage({}: LoginPageProps) {
+export default function LoginPage() {
   return (
-    <Main>
-      <LoginForm />
-    </Main>
+    <>
+      <Main className="relative">
+        <LoginForm />
+      </Main>
+    </>
   )
 }

@@ -1,9 +1,11 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --white: oklch(1 0 0);
+  --black: oklch(0.145 0 0);
   --light-grey: oklch(97.02% 0 0);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -22,7 +24,7 @@
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
+  --input: var(--black);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -37,6 +39,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --red: #fc466b;
+  --blue: #3f5efb;
+  --orange: #fdbb2d;
+  --violet: #3a1c71;
 }
 
 @theme inline {
@@ -82,6 +89,13 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --color-red: var(--red);
+  --color-blue: var(--blue);
+  --color-orange: var(--orange);
+  --color-violet: var(--violet);
+  --color-white: var(--white);
+  --color-black: var(--black);
 }
 
 /* prettier-ignore */
@@ -113,6 +127,17 @@
 
 @utility tombola-container {
   @apply container px-4 mx-auto;
+}
+
+@utility glass {
+  @apply bg-white/25 backdrop-filter backdrop-blur-[7px] border border-white;
+}
+
+@utility app-bg {
+  background-image: url('../../public/images/bg/app-bg.png');
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: 100vw auto;
 }
 
 .dark {
