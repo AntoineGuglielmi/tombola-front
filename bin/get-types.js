@@ -1,7 +1,11 @@
 const fs = require('fs')
 const path = require('path')
 
-const outputPath = path.join(process.cwd(), 'src/types', 'strapi-types.ts')
+const outputPath = path.join(
+  process.cwd(),
+  'src/shared/types',
+  'strapi-types.ts',
+)
 
 async function main() {
   const res = await fetch('http://localhost:1337/api/get-types')
