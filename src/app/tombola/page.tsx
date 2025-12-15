@@ -7,7 +7,10 @@ type TombolaPageProps = {
 
 export default function TombolaPage({}: TombolaPageProps) {
   return (
-    <Main className="">
+    <Main
+      layout="default"
+      container
+    >
       <p>Tombola</p>
       <LogoutButton />
     </Main>

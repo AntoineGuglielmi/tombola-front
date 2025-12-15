@@ -4,7 +4,12 @@ import Main from '@/shared/components/atoms/main'
 export default function LoginPage() {
   return (
     <>
-      <Main className="relative">
+      <Main
+        className="relative"
+        container
+        height="screen"
+        layout="center"
+      >
         <LoginForm />
       </Main>
     </>
