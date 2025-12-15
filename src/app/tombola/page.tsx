@@ -1,4 +1,5 @@
 import LogoutButton from '@/features/logout/component/logout-button'
+import Main from '@/shared/components/atoms/main'
 
 type TombolaPageProps = {
   params: Promise<void>
@@ -6,9 +7,9 @@ type TombolaPageProps = {
 
 export default function TombolaPage({}: TombolaPageProps) {
   return (
-    <main className="">
+    <Main className="">
       <p>Tombola</p>
       <LogoutButton />
-    </main>
+    </Main>
   )
 }

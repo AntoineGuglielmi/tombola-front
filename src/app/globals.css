@@ -126,7 +126,7 @@
 }
 
 @utility tombola-container {
-  @apply container px-4 mx-auto;
+  @apply container px-8 mx-auto;
 }
 
 @utility glass {
