@@ -1,11 +1,10 @@
 import Username from './username'
 
 type HeaderProps = {
-  className?: string
   children?: React.ReactNode
 }
 
-export default function Header({ className, children }: HeaderProps) {
+export default function Header({ children }: HeaderProps) {
   return (
     <header className="Header p-8">
       <p>Bonjour</p>
