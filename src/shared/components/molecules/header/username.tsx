@@ -1,6 +1,5 @@
 'use client'
 
-import { cn } from '@/shared/lib/utils'
 import { UseUser } from '@/shared/store/UseUser'
 import { Skeleton } from '../../ui/skeleton'
 

@@ -9,5 +9,12 @@ export default function LogoutButton({}: LogoutButtonProps) {
   const handleLogout = async () => {
     await actionLogout()
   }
-  return <Button onClick={handleLogout}>Se déconnecter</Button>
+  return (
+    <Button
+      variant="default"
+      onClick={handleLogout}
+    >
+      Se déconnecter
+    </Button>
+  )
 }

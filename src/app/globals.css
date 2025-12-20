@@ -130,7 +130,7 @@
 }
 
 @utility glass {
-  @apply bg-white/25 backdrop-filter backdrop-blur-[7px] border border-white;
+  @apply bg-white/25 backdrop-filter backdrop-blur-[7px] border border-white/35;
 }
 
 @utility app-bg {
